@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>Racket Drawing Toolkit</title>
+      <script type="text/javascript" src="DrawingContext.js"></script>
+
+      <!--
+        // Depends on Canvas API v5:
+        //      - smoothing: http://www.whatwg.org/specs/web-apps/current-work/#dom-context-2d-imagesmoothingenabled
+        // , odd-even
+        // TODO:
+        //      - multiple constructors for classes
+        //	 - benchmark pixel operations inside bitmap.js and class-extras.js
+        //      - TEST SUITES: transforms, paths, regions
+        //      - measureText needs to be rigorously tested!
+        
+-->
+        
+        <style>
+            body{background: white;}
+            canvas{border: solid 1px black;}
+        </style>
+    </head>
+    <body onLoad="context = new dc(); document.body.appendChild(context.canvas);">
+        <h1>RacketDrawingToolkit.js</h1>
+        A javascript implementation of the <a href="http://docs.racket-lang.org/draw/index.html?q=dc">Racket Drawing Toolkit</a>. <br/>
+        <b>Implements:</b>
+        <ul>
+            <li><a href="http://docs.racket-lang.org/draw/region_.html?q=dc">region%</a></li> 
+            <li><a href="http://docs.racket-lang.org/draw/dc___.html?q=dc">dc%</a> [<a href="#" onClick="runTests(drawing, context)">Run Tests</a>] - <tt>fillStyle "odd-even"</tt> is only supported on Mozilla 7+</li>
+            <li><a href="http://docs.racket-lang.org/draw/dc-path_.html?q=dc">dc-path%</a></li>
+            <li><a href="http://docs.racket-lang.org/draw/bitmap_.html?q=dc">bitmap%</a>[<a href="#" onClick="runTests(bitmaps, context)">Run Tests</a>] - <tt>bgcolor</tt> is currently ignored, and images can only be saved as PNG and JPG</li>
+            <li><a href="http://docs.racket-lang.org/draw/bitmap-dc_.html?q=dc">bitmap-dc%</a> [<a href="#" onclick="bdc=new bitmap_dc('test_files/winter.jpg'); document.body.appendChild(bdc.canvas)">bind a bitmap-dc%, to <tt>bdc</tt></a>]</li>
+            <li><a href="http://docs.racket-lang.org/draw/brush-list_.html?q=dc">brush-list%</a>, <a href="http://docs.racket-lang.org/draw/brush_.html?q=dc">brush%</a> [<a href="#" onClick="runTests(brushes, context)">Run Tests</a>]</li>
+            <li><a href="http://docs.racket-lang.org/draw/font-list_.html?q=font&q=dc">font-list%</a>, <a href="http://docs.racket-lang.org/draw/font_.html?q=font&q=dc">font%</a> [<a href="#" onClick="runTests(fonts, context)">Run Tests</a>]</li>
+            <li><a href="http://docs.racket-lang.org/draw/color-database___.html?q=dc">color-database%</a>, <a href="http://docs.racket-lang.org/draw/color_.html?q=dc">color%</a></li>
+            <li><a href="http://docs.racket-lang.org/draw/radial-gradient_.html?q=dc">radial-gradient%</a>, <a href="http://docs.racket-lang.org/draw/linear-gradient_.html?q=dc">linear-gradient%</a> [<a href="#" onClick="runTests(gradients, context)">Run Tests</a>]</li>
+            <li><a href="http://docs.racket-lang.org/draw/pen-list_.html?q=dc">pen-list%</a>, <a href="http://docs.racket-lang.org/draw/pen_.html?q=dc">pen%</a> [<a href="#" onClick="runTests(pens, context)">Run Tests</a>] (dashed/dotted line stroking only works on browsers that support it - FF8+ and Webkit Nightly)</li>
+            <li><a href="http://docs.racket-lang.org/draw/point_.html?q=dc">point%</a></li>            
+        </ul>
+        <br/>
+        Feel free to try out the API manually:<br/>
+        Open a javascript console, and refer to functions of the <tt>context</tt> object. For example, if you'd like to use the <tt>draw-rounded-rectangle</tt> function, you would type <tt>context.drawRoundedRectangle(0,0,100,100,30)</tt>. Any input that requires a list (<tt>new LinearGradient()</tt>, for example) should instead be passed a javascript array. Colors are passed as  <a href="http://docs.racket-lang.org/draw/color_.html?q=dc">color%</a> objects. Images are passed as <a href="http://docs.racket-lang.org/draw/bitmap_.html?q=dc">bitmap%</a> objects. For examples of API calls, see <a href="test_files/tests.js">tests.js</a> for details. Any contexts you add (through <tt>new dc()</tt> or <tt>new bitmap_dc()</tt>) can be bound to a variable, and their canvas can be added to the document through normal DOM methods <tt>document.body.appendChild(<i>context</i>.canvas)</tt>.<br/>
+    </body>
+
+        <script type="text/javascript" src="test_files/tests.js"></script>
+</html>
