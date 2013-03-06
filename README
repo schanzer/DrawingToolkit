@@ -1,0 +1,11 @@
+A javascript implementation of the Racket Drawing Toolkit.
+
+Some functionality (notably dashed strokes) only works in FF8+ and WebKit Nightlies, though the vast majority should work in any browser with decent Canvas support. 
+
+When browser support for the v5 Canvas API becomes widespread, a LOT of this code can be factored out. Specifically:
+	- measureText
+	- ellipse
+	- arcTo
+	- some of the Transformation pipeline stuff?
+
+I'd wager this is at *least* 5% of the entire codebase.
